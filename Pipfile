@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+sqlalchemy = "*"
+pydantic = {extras = ["email"], version = "*"}
+passlib = "*"
+pyjwt = "*"
+python-multipart = "*"
+bcrypt = "*"
+
+[dev-packages]
+isort = "*"
+black = "*"
+
+[pipenv]
+allow_prereleases = true

@@ -1,0 +1,18 @@
+{
+    "editor.rulers": [88],
+    // Use black as the project's code formatter
+    "python.formatting.provider": "black",
+    // --- Imports Sorting (isort) ---
+    "python.sortImports.args": ["--profile", "black"],
+    "[python]": {
+        // black
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        // isort
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "python.pythonPath": ".venv/bin/python",
+}
