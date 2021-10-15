@@ -45,14 +45,8 @@ def login_access_token(
     return schemas.Token(access_token=security.create_user_access_token(user))
 
 
-@user_router.get("/me", response_model=schemas.User)
-def retrieve_me(
-    current_user: models.User = Depends(get_current_user),
-):
-    """
-    Retrieves information about the current user.
-    """
-    return current_user
+# Task: Create a controller "retrieve_me", that will return the current user's
+# information when a user hits `GET /api/users/me`
 
 
 # -------------------------------------------------------------------------------------
@@ -89,17 +83,8 @@ def list_notes(
     return db_notes
 
 
-@note_router.post("", response_model=schemas.Note)
-def create_note(
-    note: schemas.NoteCreate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user),
-):
-    """
-    Create a note.
-    """
-    db_note = crud.create_note(db, note, current_user.id)
-    return db_note
+# Task: Create a controller "create_note", that will create a note authored by the
+# current user and return it when the user hits `POST /api/notes`
 
 
 @note_router.put("/{note_id}", response_model=schemas.Note)
@@ -119,17 +104,5 @@ def update_note(
     return db_note
 
 
-@note_router.delete("/{note_id}", status_code=204)
-def delete_note(
-    note_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user),
-):
-    """
-    Delete a note, provided an id.
-    """
-    db_note = crud.get_note_by_user(db, note_id, current_user.id)
-    if not db_note:
-        raise HTTPException(status_code=404, detail="Note not found")
-    crud.delete_note(db, db_note)
-    return Response(status_code=204)
+# Task: Create a controller "delete_note", that will delete a note specified by an id
+# and return 204 on success when the user hits `DELETE /api/notes/{note_id}`

@@ -9,17 +9,20 @@ models.Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
-    description=settings.PROJECT_DESCRIPTION,
-    version=settings.PROJECT_VERSION,
-    openapi_url=settings.OPENAPI_URL,
-    docs_url=settings.SWAGGER_URL,
-    redoc_url=settings.REDOC_URL,
+    # title=settings.PROJECT_NAME,
+    # description=settings.PROJECT_DESCRIPTION,
+    # version=settings.PROJECT_VERSION,
+    # openapi_url=settings.OPENAPI_URL,
+    # docs_url=settings.SWAGGER_URL,
+    # redoc_url=settings.REDOC_URL,
 )
 
-app.include_router(api.user_router, prefix="/api/users")
+# Starting Task: Create a controller "test", that will return the following JSON
+# {"example": "This is a test"} when a user hits `GET /api/test`
 
-app.include_router(api.note_router, prefix="/api/notes")
+# app.include_router(api.user_router, prefix="/api/users")
+
+# app.include_router(api.note_router, prefix="/api/notes")
 
 
 if __name__ == "__main__":
